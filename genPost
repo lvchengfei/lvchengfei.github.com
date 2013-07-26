@@ -1,0 +1,60 @@
+#!/bin/bash
+
+postPath="./_posts/";
+imagePath="./images";
+
+help()
+{
+   cat << HELP
+   This is a generate post bash.
+   -date:year-month-day
+   -title:post file title
+   -category[optinal]:post file category
+   -Tag[optional]:post file tag
+   USAGE EXAMPLE: genPost -d 2013-10-01 -t postTitle
+HELP
+   exit 0
+}
+  
+#if argument less then three number , then show help
+if [ $# -lt 2 ]; then
+help
+fi
+
+while [ -n "$1" ]; do
+case "$1" in
+	-h) help;shift 1;; # function help is called
+   -d) _date=$2; shift 2;;
+   -t) _title=$2; shift 2;;
+   -c) _category=$2; shift 2;;
+   -T) _tag=$2; shift 2;;
+   -*) echo "error: no such option $1. -h for help";exit 1;;
+   *) break;;
+esac
+done
+
+if [ -z $_date ]; then
+_date="`date +%Y-%m-%d`";
+fi
+
+#compise the name
+name="$_date-$_title-post.md";
+
+#create post directory and file
+mkdir "$postPath/$_title";
+touch "$postPath/$_title/$name";
+
+#create images directory
+mkdir "$imagePath/$_title";
+
+#set post file head content
+echo "--- \n\
+layout: post\n\
+title: \"$_title\"\n\
+description: \"\" \n\
+category: $_category \n\
+tags: [$_tag] \n\
+--- \n\
+{% include JB/setup %}" >> "$postPath/$_title/$name";
+
+echo "`pwd`/$name is create sucess!"
