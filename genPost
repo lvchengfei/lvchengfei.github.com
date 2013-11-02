@@ -48,7 +48,7 @@ touch "$postPath/$_title/$name";
 mkdir "$imagePath/$_title";
 
 #set post file head content
-echo "--- \n\
+echo -e "--- \n\
 layout: post\n\
 title: \"$_title\"\n\
 description: \"\" \n\
