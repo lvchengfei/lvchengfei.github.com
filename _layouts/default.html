@@ -39,6 +39,8 @@ theme :
   </head>
 
   <body>
+  
+ 	<!--navBar content-->
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container-narrow">
@@ -51,38 +53,29 @@ theme :
         </div>
       </div>
     </div>
+    
  	<div class="container-fluid">
+    <!--Sidebar content--> 	
 	<div class="span3">
-      <!--Sidebar content-->
 	<h2>ldo</h2>
-	
-	<p>码农，投身移动互联网，<br/>
-	目前以ios谋生。<br/></p>
-	<h4><strong>当前动态:</strong></h4>
-	<p>正学习webapp，前端开发，</br>
-	虽然若干年前觉得是个体力活把它抛弃了。</p>
-
+	<p>码农，ios开发，目前杭州。<br/>
+	</br>	
 	<h4><strong>联系方式：</strong></h4>
-	<p>email: <strong>chengfeilv@gmail.com</strong> <br/>
-	github: <strong><a href="https://github.com/lvchengfei">lvchengfei</a> </strong></p>
+ 	<p>email: <strong>chengfeilv@gmail.com</strong> </p>
+	<p>github: <strong><a href="https://github.com/lvchengfei">lvchengfei</a> </strong></p>
+	<p><a href="http://weibo.com/u/1803458605" target="_blank">我的微博</a></p>
     </div>
+     <!--Body content-->
     <div class="span9">
-      <!--Body content-->
+     
       {{ content }}
      
  <p>
  Copyright&copy; {{ site.time | date: '%Y' }} {{site.author.name}} Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>, host by <a href="https://github.com/yuguo">Github</a>
  </p>
-     </div>
-<!-- 
-    <footer <p>
- Copyright&copy; {{ site.time | date: '%Y' }}Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> and host by <a href="https://github.com/yuguo">Github</a>
- </p>
- </footer>
- -->
- 
-</div>
-  
-{% include JB/analytics %}
+ 	</div>
+
+
+	{% include JB/analytics %}
   </body>
 </html>
