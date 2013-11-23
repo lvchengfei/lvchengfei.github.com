@@ -52,18 +52,19 @@ tags: [其他]
 编译通过，但在sparkInspector 未能检测到app
 
 **解决方法**  
-other link flags 中添加`-ObjC` and `-framework SparkInspector`
+other link flags 中添加`-ObjC` and `-framework SparkInspector`，关键是添加`-ObjC`，`-framework SparkInspector` 和在`Build Phases` 下的`Link Binary with Libraries` 中设置SparkInspector.framework 是一致的。
 
 **问题3**  
 ![图2](/images/{{page.title}}/2.png)  
 
 **解决方法**  
-删除`Build Phases` 下的`Link Binary with Libraries` 中的SparkInspector。
+删除`Build Phases` 下的`Link Binary with Libraries` 中的SparkInspector。虽然能编译通过，但是无效果，对应问题2，然后添加other link flags 中添加`-ObjC` and `-framework SparkInspector` 会出现同样的问题。
 
 ![图3](/images/{{page.title}}/3.png)  
 
 
 添加sparkInspector.framework后会在`framework search path`中设置对应的绝对路径，虽然你后面选`recursive`也不行。
 
-但是很奇怪，如果你在路径后面加`../..` 也可以，或者使用`$(SRCROOT)/../ ` 也可以。
+***终级方法，但不知道为什么***  
+如果你在已经有的绝对路径后面加`../..` 也可以，或者使用`$(SRCROOT)/../ ` 也可以，当然别忘记设置为`recursive`
 
