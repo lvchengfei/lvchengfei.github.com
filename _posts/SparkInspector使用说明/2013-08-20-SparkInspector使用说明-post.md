@@ -67,4 +67,16 @@ other link flags 中添加`-ObjC` and `-framework SparkInspector`，关键是添
 
 ***终级方法，但不知道为什么***  
 如果你在已经有的绝对路径后面加`../..` 也可以，或者使用`$(SRCROOT)/../ ` 也可以，当然别忘记设置为`recursive`
+****更新****
+知道为什么加../可以了，那是因为外层用cocoapods 拉下来过sparkinspector，所以就找到那边去了。
+
+***真正原因***   
+我通过打开spark，然后Spark Inspector > Reveal Framework ，拷贝了一个sparkInspector 到工程目录下，然后添加，虽然添加了，但是该framework是空的，如下图所示，因为其本身是些符号链接，拷贝后估计出错了。  
+![图4](/images/{{page.title}}/4.png)  
+
+`所以务必直接将Spark Inspector > Reveal Framework 目录下的framework 直接拖入工程`，在工程的`framework search path` 会看到正确的搜索路径    
+
+![图5](/images/{{page.title}}/5.png) 
+
+
 
